@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>球探比分 · 信息卡片</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+      background: #fafaf9;
+      color: #1c1c1e;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrapper {
+      max-width: 720px;
+      width: 100%;
+      padding: 2.8rem 1.5rem 3.5rem;
+    }
+
+    /* 主视觉 ———— 简明卡片 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      padding: 3rem 2.2rem;
+      margin-bottom: 2.5rem;
+      transition: box-shadow 0.2s;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: #121213;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-text {
+      font-size: 1.05rem;
+      color: #3a3b3e;
+      max-width: 620px;
+      margin-top: 0.5rem;
+    }
+
+    .hero-text a {
+      color: #0055bb;
+      text-decoration: none;
+      font-weight: 450;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .hero-text a:hover {
+      border-bottom-color: #0055bb;
+    }
+
+    .divider-light {
+      margin: 2rem 0 1.8rem;
+      height: 1px;
+      background: #e7e7e9;
+      width: 100%;
+    }
+
+    /* 卡片网格 ———— 用途 + 人群 */
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card-item {
+      flex: 1 1 200px;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 1.5rem 2rem;
+      border: 1px solid #efefef;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .card-item h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.9rem;
+      color: #1e1e20;
+    }
+
+    .card-item p {
+      font-size: 0.95rem;
+      color: #4a4b4d;
+      line-height: 1.6;
+    }
+
+    .card-item .icon-marker {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
+      opacity: 0.7;
+    }
+
+    /* 自然链接段落 (介绍 + 场景) */
+    .narrative-section {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 2.2rem 2rem 2.4rem;
+      margin-bottom: 2rem;
+      border: 1px solid #f0f0f1;
+    }
+
+    .narrative-section h2 {
+      font-size: 1.55rem;
+      font-weight: 470;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.3rem;
+      color: #151517;
+    }
+
+    .narrative-section p {
+      font-size: 1rem;
+      color: #3e3f42;
+      margin-bottom: 1.2rem;
+    }
+
+    .narrative-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .narrative-section a {
+      color: #0055bb;
+      font-weight: 450;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 85, 187, 0.2);
+      transition: border-color 0.15s;
+    }
+
+    .narrative-section a:hover {
+      border-bottom-color: #0055bb;
+    }
+
+    .faq-mini {
+      background: #f4f4f6;
+      border-radius: 24px;
+      padding: 1.6rem 1.8rem;
+      margin-top: 1.8rem;
+    }
+
+    .faq-mini h4 {
+      font-weight: 480;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: #18181b;
+    }
+
+    .faq-mini p {
+      font-size: 0.95rem;
+      color: #3e3f42;
+    }
+
+    .faq-mini a {
+      color: #0055bb;
+      border-bottom: 1px solid rgba(0, 85, 187, 0.15);
+    }
+
+    .footnote {
+      margin-top: 2.2rem;
+      font-size: 0.85rem;
+      color: #88898c;
+      text-align: center;
+      border-top: 1px solid #e3e3e5;
+      padding-top: 2rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      .page-wrapper {
+        padding: 1.8rem 1rem 2.5rem;
+      }
+      .hero-card {
+        padding: 2rem 1.4rem;
+      }
+      .hero-title {
+        font-size: 2.4rem;
+      }
+      .card-item {
+        flex: 1 1 100%;
+      }
+      .narrative-section {
+        padding: 1.8rem 1.4rem;
+      }
+      .faq-mini {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+      <div class="hero-title">
+        球探比分
+      </div>
+      <div class="hero-text">
+        一场比赛的脉搏，往往藏在每一次射门、每一次扑救和那串跳动的数字里。很多人习惯在周末的午后，同时留意几场联赛的走向——不是为了下注，而是为了感受节奏、战术与偶然间的戏剧性。而<strong>球探比分</strong>恰好提供了这样一种视角：实时数据、完整赛程、历史对阵，它们像一面干净的镜子，映出绿茵场上的真实脉络。
+      </div>
+    </div>
+
+    <!-- 两张并列卡片：用途 + 适合人群 -->
+    <div class="card-grid">
+      <div class="card-item">
+        <div class="icon-marker">📋</div>
+        <h3>用途 · 不止于记分</h3>
+        <p>
+          查看即时比分、未来赛程与完场详情，也支持按联赛、球队或日期筛选。页面简洁，没有冗余弹窗，专注信息本身。
+        </p>
+      </div>
+      <div class="card-item">
+        <div class="icon-marker">👥</div>
+        <h3>适合人群</h3>
+        <p>
+          足球爱好者、数据分析型球迷、业余写作者、赛事复盘者——只要你想快速了解一场比赛的骨架，这里都是一个安静的起点。
+        </p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落：场景 + 叙事 -->
+    <div class="narrative-section">
+      <h2>日常场景一隅</h2>
+      <p>
+        某个工作日的深夜，你打开手机，发现自己关注的球队刚刚完成一场逆转。你不需要重播全场比赛，只需要扫一眼射门次数、控球率、关键传球——这些数字本身就能讲述一个大致的故事。然后你点开历史交锋记录，发现过去五次碰面双方各有胜负，暗自记下这个细节，准备和朋友聊聊。
+      </p>
+      <p>
+        在这样的习惯里，<a href="https://zh-han-qiutansports.com">球探比分</a>扮演了一个沉默的协助者：不制造焦虑，不夸大解读，只是把经过整理的数据交到你手里。你可以用它来复盘，也可以只瞄一眼明早比赛的开球时间。
+      </p>
+
+      <!-- 微型 FAQ 摘要 -->
+      <div class="faq-mini">
+        <h4>❔ 常见问题摘要</h4>
+        <p>
+          Q：数据更新是否及时？—— 通常延迟在数十秒内，涵盖主流联赛及杯赛。<br>
+          Q：需要注册才能使用？—— 目前无需登录即可浏览比分与赛程，部分深度统计可能需要轻量设置。<br>
+          Q：移动端体验如何？—— 页面适配手机与平板，卡片式布局在窄屏下依然清晰。
+        </p>
+      </div>
+    </div>
+
+    <!-- 收尾 -->
+    <div class="footnote">
+      信息卡片 · 叙述向 · 球探比分
+    </div>
+  </div>
+</body>
+</html>
