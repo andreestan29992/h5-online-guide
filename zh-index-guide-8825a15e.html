@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>球探比分 - 信息型介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fcedda 0%, #f7d9b3 40%, #f3c8a0 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .wrapper {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(2px);
+      border-radius: 48px 48px 36px 36px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 25px 40px -12px rgba(160, 100, 60, 0.35);
+    }
+
+    /* 卡片式布局 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0 2.2rem;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 1.6rem 2rem;
+      box-shadow: 0 10px 20px -6px rgba(180, 120, 70, 0.18);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 30px -10px rgba(150, 90, 40, 0.25);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #7f4e2a;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card-title::before {
+      content: "▍";
+      color: #d9945c;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .card-text {
+      color: #3f2c1b;
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    .hero-area {
+      text-align: center;
+      padding: 0.6rem 0 1rem;
+    }
+
+    .hero-area h1 {
+      font-size: 2.3rem;
+      font-weight: 650;
+      color: #5a3a20;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .hero-area .subhead {
+      font-size: 1.1rem;
+      color: #7f5b3a;
+      max-width: 600px;
+      margin: 0 auto 0.2rem;
+      line-height: 1.5;
+      background: rgba(255, 245, 235, 0.6);
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      display: inline-block;
+      backdrop-filter: blur(2px);
+    }
+
+    .bridge-paragraph {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #3e2d1d;
+      background: rgba(255, 240, 225, 0.5);
+      padding: 1.2rem 1.6rem;
+      border-radius: 30px;
+      margin: 0.8rem 0 0.2rem;
+    }
+
+    .bridge-paragraph a {
+      color: #9f6337;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #eab282;
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .bridge-paragraph a:hover {
+      border-bottom-color: #a5612b;
+      color: #794a27;
+    }
+
+    .faq-mini {
+      background: white;
+      border-radius: 30px;
+      padding: 1.4rem 1.8rem 1.8rem;
+      margin: 2rem 0 0.8rem;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #60442c;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed #e6cfb5;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #7b4f2d;
+      font-size: 0.98rem;
+    }
+
+    .faq-a {
+      color: #4e3824;
+      line-height: 1.6;
+      font-size: 0.93rem;
+    }
+
+    .disclaimer-note {
+      text-align: center;
+      margin: 2rem 0 0.2rem;
+      font-size: 0.85rem;
+      color: #7a614b;
+      opacity: 0.85;
+      border-top: 1px solid rgba(160, 120, 80, 0.25);
+      padding-top: 1.5rem;
+    }
+
+    .btn-soft {
+      display: inline-block;
+      background: rgba(255, 235, 215, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 0.35rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #6f472b;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 6px rgba(140, 90, 50, 0.08);
+    }
+
+    .btn-soft:hover {
+      background: #f5dec9;
+      box-shadow: 0 6px 12px rgba(150, 95, 45, 0.15);
+    }
+
+    .flex-center {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.2rem 0 0.2rem;
+    }
+
+    @media (max-width: 600px) {
+      .wrapper {
+        padding: 1.8rem 1.2rem;
+        border-radius: 32px;
+      }
+
+      .hero-area h1 {
+        font-size: 1.9rem;
+      }
+
+      .hero-area .subhead {
+        font-size: 0.95rem;
+        padding: 0.3rem 1rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .info-card {
+        padding: 1.4rem 1.2rem;
+      }
+
+      .faq-mini {
+        padding: 1rem 1.2rem;
+      }
+
+      .bridge-paragraph {
+        padding: 1rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <!-- hero / 主视觉 -->
+  <div class="hero-area">
+    <h1>⚽ 球探比分 · 信息台</h1>
+    <div class="subhead">比分动态的稳定入口 · 知识型参考页</div>
+  </div>
+
+  <!-- 承接段落：自然链接出现 -->
+  <div class="bridge-paragraph">
+    对于长期关注赛场变化的用户来说，一个结构清晰、反馈及时的比分页面能有效降低信息获取成本。
+    <a href="https://zh-index-qiutansports.com">球探比分</a> 正是一处相对轻量的信息起点，它聚合了主流赛事的实时数据与赛程预览，适合作为观赛前的快速参考。下文从用途、适配场景、受众三个角度展开简述。
+  </div>
+
+  <!-- 信息卡片网格 -->
+  <div class="card-grid">
+    <!-- 卡片1：用途 -->
+    <div class="info-card">
+      <div class="card-title">用途简述</div>
+      <div class="card-text">
+        页面围绕比分列表与赛程结构进行组织，方便用户快速了解当前进行中或即将开始的场次。通过分类筛选（联赛、杯赛、地区）可以缩小关注范围，比分与时间信息以列表形式呈现，减少多余跳转。
+      </div>
+    </div>
+
+    <!-- 卡片2：适合人群 -->
+    <div class="info-card">
+      <div class="card-title">适合人群</div>
+      <div class="card-text">
+        既包括习惯在赛前浏览比分列表的普通观众，也包含需要快速查看多场比分以辅助判断的进阶用户。对于希望在碎片时间里保持赛事同步的人而言，这种轻量级入口比深度分析页更直接。
+      </div>
+    </div>
+
+    <!-- 卡片3：场景与使用 -->
+    <div class="info-card">
+      <div class="card-title">常见使用场景</div>
+      <div class="card-text">
+        工作日午间快速扫一眼比分变化、周末赛前查看预计首发与实时比分、或者单纯浏览某联赛当日赛果。页面不需要注册即可查看大部分基础数据，降低使用门槛。
+      </div>
+    </div>
+  </div>
+
+  <!-- 微FAQ / 常见方向 -->
+  <div class="faq-mini">
+    <h3>❓ 常见关注点</h3>
+    <div class="faq-item">
+      <span class="faq-q">数据覆盖范围？</span>
+      <span class="faq-a">主要涵盖欧洲、亚洲、南美等主流联赛及杯赛，部分次级联赛也有收录，具体以实际展示为准。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">是否需要安装客户端？</span>
+      <span class="faq-a">无需，通过浏览器即可直接使用页面功能，比分列表与赛程均为在线加载。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">比分更新频率如何？</span>
+      <span class="faq-a">通常接近实时，但受数据源与网络影响可能存在分钟级延迟，建议以官方赛事数据为准。</span>
+    </div>
+  </div>
+
+  <!-- 软性提示/附加说明，用圆角按钮感链接点缀 -->
+  <div class="flex-center">
+    <span class="btn-soft">赛程列表</span>
+    <span class="btn-soft">联赛筛选</span>
+    <span class="btn-soft">今日比分</span>
+  </div>
+
+  <!-- 结尾 + 再次自然链接（已包含在段落中） -->
+  <div class="disclaimer-note">
+    此处为信息型介绍页，内容仅供参考。如需直接访问比分页面，可前往
+    <a href="https://zh-index-qiutansports.com" style="color:#8f623b; font-weight:600; text-decoration:none; border-bottom:1px solid #cba07a;">球探比分</a>
+    ，查看最新赛事数据。
+    <br><span style="display:inline-block; margin-top:0.6rem; opacity:0.6;">· 保持信息简洁 · 无诱导表述 ·</span>
+  </div>
+</div>
+</body>
+</html>
